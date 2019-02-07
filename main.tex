@@ -126,8 +126,7 @@
 
 %====================================================================
 \begin{abstract}
-    Parallel patterns are widely used high-level parallel programming methodology for developing structured parallel programs that are maintainable, adaptive and portable while also achieving good performance on variety of parallel systems. However, there is still a lot of \emph{legacy-parallel} code which was developed before the emergence of parallel pattern libraries and which would benefit from structured parallelism to ensure the aforementioned benefits. 
-    In this extened abstract, we outlined the \emph{software restoration} methodology for converting legacy-parallel applications into structured parallel code using parallel patterns. In the full version of this paper, we will also present refactorings to eliminate ad-hoc pthread parallelism from the legacy-parallel code, which is a first step in the proposed methodology of software restoration. Furthermore, we will show the benefit of software restoration on a number of realistic benchmarks and use-cases in terms of gained performance, increased adaptivity, portability and maintainability. 
+    Parallel patterns enable developing structured parallel programs that are maintainable, adaptive and portable while also achieving good performance on variety of parallel systems. However, there still exists a large base of \emph{legacy-parallel} code which was developed using low-level parallel libraries such as \emph{pthreads} which would benefit from structured parallelism. In this paper, we present the \emph{software restoration} methodology for rewriting legacy-parallel applications into structured parallel code using parallel patterns. We also describe software \emph{refactorings} to eliminate ad-hoc (pthread) parallelism from the legacy-parallel code, which is a first step in the proposed methodology of software restoration. Finally, we demonstrate the benefit of software restoration on a number of realistic benchmarks and use-cases in terms of gained performance, increased adaptivity, portability and maintainability. 
 \end{abstract}
 
 
@@ -136,20 +135,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction (1 page)}
 
-Plan:
+%Plan:
 
-\begin{itemize}
-\item Title, Abstract, Introduction (1.5 pages)
-\item Software Restoration (2 pages)
-\item Background (Refactorings, Pattern Discovery, Analysis) (1 page)
-\item Parallelism Elimination Refactorings (2 pages)
-\item Evaluation (4 pages)
-\item Related Work, Conclusions, Future Work, References (1.5 pages)
-\end{itemize}
+%\begin{itemize}
+%\item Title, Abstract, Introduction (1.5 pages)
+%\item Software Restoration (2 pages)
+%\item Background (Refactorings, Pattern Discovery, Analysis) (1 page)
+%\item Parallelism Elimination Refactorings (2 pages)
+%\item Evaluation (4 pages)
+%%\item Related Work, Conclusions, Future Work, References (1.5 pages)
+%\end{itemize}
 
 
-Parallel patterns are well established high-level parallel programming model for producing portable, maintainable, adaptive and efficient parallel code. They have been endorsed by some of the biggest IT companies, such as Intel and Microsoft, who have developed their own parallel pattern libraries (Intel TBB, Microsoft PPL etc.) A standard way of using these libraries is to start with the sequential code, identify in it the portions of the code that are amenable to parallelisation together with the exact parallel pattern to be applied, and then instantiating the identified pattern at the identified location in the code, after possibly restructuring the code to accommodate for parallelism. Sequential code gives the cleanest starting point for introduction of parallel patterns. There exists, however, a large base of \emph{legacy} code that was parallelised using lower-level, mostly ad-hoc parallelisation methods and libraries, such as \lstinline{pThreads}. This code is usually tailored to a specific parallelisation, all but preventing exploration of alternative parallelisation methods, and optimised for a specific system architecture. All this significantly reduces maintainability and portability of the code. %with highly-specific and tuned data structures which prevent alternative (possibly more efficient parallelisations) or portability to different platforms. Also, code maintainance requires intricate knowledge about the system architecture and various low-level underlying mechanisms such as thread creation, synchronisation and scheduling. 
-Introducing structured parallelism in form of instances of parallel patterns into legacy-parallel code would significantly improve the code with respect to maintainability and portability. This is, however, usually a daunting task due to various factors, such as high degree of specialisation and custom tuning of the legacy code, incompability between lstinline{pThreads} and parallel pattern libraries, usage of very specific, custom-built data structures tailored to a specific parallelism model etc.
+Parallel patterns are a well established high-level parallel programming model for producing portable, maintainable, adaptive and efficient parallel code. They have been endorsed by some of the biggest IT companies, such as Intel and Microsoft, who have developed their own parallel pattern libraries (Intel TBB, Microsoft PPL etc.) A standard way of using these libraries is to start with the sequential code, identify in it the portions of the code that are amenable to parallelisation together with the exact parallel pattern to be applied, and then instantiating the identified pattern at the identified location in the code, after possibly restructuring the code to accommodate for parallelism. Sequential code gives the cleanest starting point for introduction of parallel patterns. There exists, however, a large base of \emph{legacy} code that was parallelised using lower-level, mostly ad-hoc parallelisation methods and libraries, such as \lstinline{pThreads}. This code is usually tailored to a specific parallelisation, all but preventing exploration of alternative parallelisation methods, and optimised for a specific system architecture. All this significantly reduces maintainability and portability of the code. %with highly-specific and tuned data structures which prevent alternative (possibly more efficient parallelisations) or portability to different platforms. Also, code maintainance requires intricate knowledge about the system architecture and various low-level underlying mechanisms such as thread creation, synchronisation and scheduling. 
+Introducing pattern parallelism into legacy-parallel code would significantly improve the code qulaity, but this is usually a daunting task due to various factors, such as high degree of specialisation and custom tuning of the legacy code, incompability between lstinline{pThreads} and parallel pattern libraries, usage of very specific, custom-built data structures tailored to a specific parallelism model etc.
   
 This paper will present a first step towards a semi-automated \emph{software restoration} methodology of restructuring and refactoring legacy-parallel code into structured, pattern-based parallel programs. The focus of the paper is on software refactorings to semi-automatically \emph{eliminate} parallelism from a parallel application written using the \lstinline{pthreads} library. This will turn the legacy-parallel code into "unclean" sequential (or possibly concurrent) code, which does not contain parallelism, but which might still have some parallelism-specific variables and/or data structures. We will demonstrate, on a number of legacy-parallel applications, that after applying parallelism removal refactorings, it is possible to obtain structured parallel code that behaves better than the original legacy-parallel version (in terms of e.g.~performance, portability or maintainability).
 

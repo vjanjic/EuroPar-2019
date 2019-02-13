@@ -1,114 +1,17 @@
-%\documentclass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-%\documentclass[twocolumn]{svjour3}          % twocolumn
-\documentclass{llncs}
-\usepackage{etex}
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
 %
-% \smartqed  % flush right qed marks, e.g. at end of proof
+\documentclass[runningheads]{llncs}
 %
-%=====================================
-% USE PACKAGE
-%\usepackage{setspace}
-\usepackage{makeidx}  % allows for indexgeneration
-\usepackage{amssymb,upgreek,nicefrac,amsmath}
-\usepackage{sgame}
-\usepackage[mathscr]{eucal}
-\usepackage{color}
-\usepackage[dvips]{epsfig}
-\usepackage[dvips]{graphicx}
-\usepackage[section]{placeins}
-%\usepackage{fancyhdr}
-%\usepackage{pstricks}
-\usepackage{pst-node}
-\usepackage{dsfont}
-\usepackage{mathrsfs}
-\usepackage{sgame}
-\usepackage{float}
-\usepackage[T1]{fontenc}
-\usepackage{aurical}
-\usepackage{tikz,pgfplots,verbatim}
-\usetikzlibrary{spy,arrows,backgrounds,plotmarks,shapes,snakes,fit}
-%\usepackage{subcaption}
-\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{graphicx}
 \usepackage{listings}
-\usepackage{multirow}
-\usepackage[thinlines]{easytable}
-
-\usepackage[ruled]{algorithm2e}
-\renewcommand{\algorithmcfname}{ALGORITHM}
-\SetAlFnt{\small}
-\SetAlCapFnt{\small}
-\SetAlCapNameFnt{\small}
-\SetAlCapHSkip{0pt}
-\IncMargin{-\parindent}
-
-% \usepgfplotslibrary{external}
-% \tikzexternalize
-
-\usepackage{natbib}
-\makeatletter
-\renewcommand\bibsection%
-{
-  \section*{\refname
-    \@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}
-}
-\makeatother
-
-%=====================================
-% NEW ENVIRONMENTS
-\newtheorem{conclusion}{Conclusion}[section]
-\newtheorem{assumption}{Assumption}[section]
-\newenvironment{answer}{\textbf{Answer.}}{$\bullet$\\}
-
-\newcommand{\Trace}[1]{{\rm\bf tr}(#1)}
-
-%=====================================
-% COLORS
-\definecolor{Yellow}{rgb}{1, 1, 0}
-\definecolor{VeryLightGray}{gray}{.90}
-\definecolor{LightGray}{gray}{.7}
-\definecolor{Gray}{gray}{.50}
-\definecolor{DarkGray}{gray}{.3}
-\definecolor{VeryDarkGray}{gray}{.10}
-
-%=====================================
-% NEW COMMANDS
-\newcommand{\tr}{^{\mathrm T}}
-\newcommand{\theset}[1]{\left\{#1\right\}}
-\newcommand\mapright[1]{\smash{\mathop{\longrightarrow}\limits^{#1}}}
-\newcommand{\Pmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}
-\newcommand{\magn}[1]{\left\vert #1 \right\vert}
-\newcommand{\positive}[1]{\left[ #1 \right]_+}
-\renewcommand{\labelitemi}{$-$}
-\newcommand{\bitem}{\item[$\bullet$]}
-\newcommand{\ff}{\mathbf{f}}
-\newcommand{\LL}{\mathbf{\Lambda}}
-\newcommand{\vv}{v}
-\newcommand{\vd}{d}
-\newcommand{\tv}{v}
-\newcommand{\tvv}{\bar{\mathbf{v}}}
-\newcommand{\cV}{\mathcal{V}}
-\newcommand{\oVV}{\overline{\mathcal{V}}}
-\newcommand{\vs}{s}
-\newcommand{\vg}{\mathbf{g}}
-\newcommand{\vy}{\mathbf{y}}
-\newcommand{\vz}{\mathbf{z}}
-\newcommand{\df}{\doteq}
-\newcommand{\col}[2]{{\rm col}\left\{#1\right\}_{#2}}
-\newcommand{\diag}[2]{{\rm diag}\left\{#1\right\}_{#2}}
-\newcommand{\RM}{$\mathsf{RM}$}
-\newcommand{\RL}{$\mathsf{PaRLSched}$}
-\newcommand{\RLplus}{$\mathsf{PaRLSched+}$}
-\newcommand{\RLplusplus}{$\mathsf{PaRLSched++}$}
-\newcommand{\OS}{$\mathsf{OS}$}
-\newcommand{\NEG}[1]{\left[#1\right]_{-}}
-\newcommand{\NEGs}[1]{[#1]_{-}}%
-\newcommand{\SIMPLEX}[1]{\Delta\left(#1\right)}
-\newcommand{\SPROFILE}{\mathbf{\Delta}}
-\newcommand{\VERTSIMPLEX}[1]{\mathbf{\Delta}^*\left(#1\right)}
-\newcommand{\RAND}[2]{{\sf rand}_{#1}\left[#2\right]}
-
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
 
 \begin{document}
 
@@ -129,10 +32,6 @@
     Parallel patterns enable developing structured parallel programs that are maintainable, adaptive and portable while also achieving good performance on variety of parallel systems. However, there still exists a large base of \emph{legacy-parallel} code which was developed using low-level parallel libraries such as \emph{pthreads} which would benefit from structured parallelism. In this paper, we present the \emph{software restoration} methodology for rewriting legacy-parallel applications into structured parallel code using parallel patterns. We also describe software \emph{refactorings} to eliminate ad-hoc (pthread) parallelism from the legacy-parallel code, which is a first step in the proposed methodology of software restoration. Finally, we demonstrate the benefit of software restoration on a number of realistic benchmarks and use-cases in terms of gained performance, increased adaptivity, portability and maintainability. 
 \end{abstract}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% INTRODUCTION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction (1 page)}
 
 %Plan:
@@ -163,18 +62,65 @@ This paper, thus, makes the following specific research contributions:
 Legacy-parallel code, written in ad-hoc way using low level parallel libraries such as \emph{pthreads}, is still very much present in various software repositories and projects. This code was usually developed by parallelism experts before the libraries and programming models for structured parallelisation became popular. It is usually tailored to one specific target machine and architecture, and might use highly-customised parallelisation and associated data structures. This makes it very hard to maintain that code, an increasing important feature in software engineering, or to port it to new architectures. In an ideal case, every legacy-parallel application could be transformed into structured parallel programs, written using high-level parallel programming libraries. However, for this to be possible, it is necessary that a well-defined underlying pattern of parallelism actually exists in the code, which can be exploited by instances of patterns. This is not always the case. However, in substantial number of cases, the parallelism in the application is an instance of one of the common patterns, such as farm, pipeline, workpool or stencil. In these cases, it should be possible, automatically or semi-automatically, to \emph{replace} unstructured parallelism with its structured (patterned) equivalent.   
 
 \subsection{Parallel Patterns (1/3 page)}
+\label{sec:patterns}
+%\annotate{Distinguish between pattern and skeleton}
+\noindent
+Parallel patterns are a high-level abstraction for designing and implementing parallel programs. They describe common types of parallel operations while abstracting
+over concrete implementation details. The programmer is presented with a simple interface to a set of patterns, requiring him to choose the right pattern and the place in his code where
+to insert it, and then provide the problem-specific details, such as particular operations that need to be executed in parallel.
+In this paper, we will restrict our attention to two most common, classical parallel patterns, which are generally considered the most useful:
 \begin{itemize}
-\item What are paralell patterns
-\item Some common patterns
-  \item Benefits of using patterns
-  \item Relevant pattern libraries (Open MP, Intel TBB...)
+\item The \emph{map/farm} pattern represent computations where the single
+  function, $f$, is applied to a set of independent inputs, $x_1,\dots,x_m$,
+  which may or may not be readily available.
+  %the inputs appear sequentially one after the other.
+  The parallelism arises from applying the same function to different
+  inputs in parallel. Map and farm are semantically identical, with the operational
+  difference that the farm is usually applied to streamed computations, where inputs are
+  dynamically arriving and therefore cannot be statically allocated to different threads;
+\item The \emph{pipeline} pattern models a parallel pipeline, where a sequence of functions, 
+$f_{1}, f_{2}, ..., f_{m}$ are applied, in turn, to a sequence of independent inputs, 
+$x_{1}, x_{2}, ..., x_{n}$, appearing one after the other. The output of $f_{i}$ becomes the input to $f_{i+1}$, so that
+parallelism arises from executing $f_{i+1}(f_i(\cdots f_1(x_k)\cdots))$ in parallel with $f_i(f_{i-1}(\cdots f_1(x_{k+1}) \cdots))$.
 \end{itemize}
+The actual implementations of the parallel patterns, in terms of the parameterised code artefacts (e.g.~functions or classes), are sometimes
+called \emph{algorithmic skeletons}~\cite{cole-manifesto}. In this paper, we will not differentiate between high-level patterns and their
+implementations - we will call them both simply patterns.
+%Skeletons abstract away low-level complexities such as thread creation, communication, synchronisation,
+%and load balancing.
 
-\subsection{Refactoring (1/3 page)}
-\begin{itemize}
-\item What is refactoring
-\item Refactoring for parallelism, specifically for patterns
-\end{itemize}
+\subsubsection{Common Pattern Libraries}
+The most commonly used parallel pattern library is OpenMP\cite{Chapman:2007:UOP:1370966}, designed as a set of compiler extensions and library calls to implement data-parallel patterns
+such as map. Intel TBB\cite{Reinders:2007:ITB:1461409} is another pattern library that supports a wider set of parallel patterns, including pipeline.
+FastFlow\cite{DBLP:conf/europar/AldinucciDKMT11} has advantage over the previous two that it supports \emph{stream-parallelism} and unbounded data streams, making it suitable for
+applications such as video-stream processing.
+
+
+\subsection{Software Refactoring (1/3 page)}
+Refactoring is the process of changing the structure of a program,
+by performing source-to-source transformations under the programmer's guidance,
+while preserving its functionality~\cite{opdyke}.  Unlike automatic
+program compilation and optimisation, refactoring emphasises the
+software development cycle, principally by: i) improving the design of
+software; ii) making software easier to understand; and iii)
+encouraging code reuse. This leads to increased productivity and
+programmability. Our refactoring tool is
+implemented in the Eclipse development platform, using the CDT plugin
+for C++ development.
+%Figure~\ref{fig:eclipse} shows a screenshot of our refactoring tool,
+%complete with a menu of refactorings for TBB, OpenMP and FastFlow.
+This \emph{semi-automatic} approach is more general than fully
+automated parallelisation techniques, which typically work only for a
+very limited set of cases under specific conditions, and are not
+easily tractable.
+%\subsection{Refactoring} % Redundant? KH
+% For example, it is possible to exploit programmer knowledge and application-specific information to apply complex transformations that could not be 
+% identified automatically.
+% if the
+%  in an easy manner, nor general.
+Furthermore, unlike e.g. simple loop parallelisation, 
+refactoring is applicable to a wide range of possible parallel structures,
+since parallelism is introduced in a structured way through algorithmic skeletons. 
 
 \subsection{Static and Dynamic Analysis}
 \begin{itemize}
@@ -194,11 +140,11 @@ Legacy-parallel code, written in ad-hoc way using low level parallel libraries s
 Three key technologies that software restoration is based are parallel patterns, software refactoring and code analysis, descrbied in Section~\ref{sec:background}. In the software restoration, code goes through different phases, from the original code, via \emph{clean} sequential code to structured parallel code. The overall process is depicted in Figure~\ref{fig:SoftRest} and it involves the following steps: 
 
 \begin{figure}
-  \begin{center}
-\includegraphics[scale=0.2]{images/SoftRest.png}
+\centering
+\includegraphics[angle=270,width=\textwidth]{images/SoftRest.pdf}
+\vspace{-2cm}
 \caption{Software Restoration Process}
 \label{fig:SoftRest}
-  \end{center}
 \end {figure}
 
 \begin{itemize}
@@ -219,18 +165,17 @@ Three key technologies that software restoration is based are parallel patterns,
 
 \section{Evaluation} (4 pages)
 
+\subsection{Matrix Multiplication}
+Parallel Matrix Multiplication is one of the most commonly used benchmarks in parallel computing, owing to its simplicity and interesting pattern of data access, which makes it suitable to study parallelisation techniques and cache behaviour. We are here considering a simple case of multiplying two $n \times n$ matrices by multiplying every row of the first matrix with every column of the second matrix. The legacy-parallel form is implemented using \lstinline{pThreads}. We consider two different parallelisations. In the \emph{fine-grained} parallelisation, a separate thread is assigned to multiplying $i$-th row of the first matrix with the $j-$th row of the second matrix, resulting in $n^2$ parallel threads. In the \emph{coarse-grained} parallelisation, a separate thread is assigned to multipying $i-$th row of the first matrix with the complete second matrix, resulting in $n$ parallel threads. For larger threads, the fine-grained parallelisation would result in saturation of the multi-core system with threads, resulting in drop of performance. Therefore, normally, we would use the coarse-grained parallelisation. The only reason for considering the fine-grained parallelisation here is to show how modern pattern libraries, with their mechanisms for automatic granularity control, can adapt the load appropriately to the system and ``fix'' the problems with bad parallelisation of the code with the libraries that do explicit thread creation and work distribution (such as \lstinline{pThreads}).
+
+Figure~\ref{fig:matMultRefac} shows the relevant code parts for the four different versions of parallel matrix multiplication. We are using the fine-grained parallelisation as an example.
+
+
+
+\subsection{PgPry}
+
+
 \section{Conclusions and future work} \label{sec:Conclusions} (1.5 page, with references)
 In this abstract, we have outlined the software restoration methodology for converting legacy-parallel applications into structured parallel code using parallel patterns. This ensures portability, maintainability and adaptivity of parallel code while maintaining, and sometimes even increasing, performance. In the full version of this paper, we will also present refactorings to eliminate ad-hoc pthread parallelism from the legacy-parallel code, which is a first step in the proposed methodology of software restoration. Furthermore, we will evaluate software restoration on a number of realistic benchmarks and use-cases, doing parallelism removal automatically and other steps manually, and demonstrating benefit in terms of gained performance, increased adaptivity, portability and maintainability.
 
-
-
-
-
-
-%==============================================================
-\bibliographystyle{splncs03}
-\bibliography{bibliography}
-
 \end{document}
-
-
